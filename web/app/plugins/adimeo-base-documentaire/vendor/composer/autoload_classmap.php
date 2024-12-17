@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Adimeo\\BaseDocumentaire\\ACF\\Fields' => $baseDir . '/src/ACF/Fields.php',
     'Adimeo\\BaseDocumentaire\\ACF\\Loader' => $baseDir . '/src/ACF/Loader.php',
     'Adimeo\\BaseDocumentaire\\Plugin' => $baseDir . '/src/Plugin.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',

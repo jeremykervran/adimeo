@@ -16,6 +16,7 @@
 
 namespace Adimeo\BaseDocumentaire;
 
+use Adimeo\BaseDocumentaire\ACF\Fields;
 use Adimeo\BaseDocumentaire\ACF\Loader;
 
 defined('ABSPATH') || exit;
@@ -39,3 +40,4 @@ register_deactivation_hook( __FILE__, ['Adimeo\BaseDocumentaire\Plugin', 'deacti
 
 // Classes
 new Loader();
+new Fields();

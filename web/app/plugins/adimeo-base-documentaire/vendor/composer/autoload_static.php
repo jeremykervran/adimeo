@@ -21,6 +21,7 @@ class ComposerStaticInit4bfbda928f0e9c0d65a229114963efc9
     );
 
     public static $classMap = array (
+        'Adimeo\\BaseDocumentaire\\ACF\\Fields' => __DIR__ . '/../..' . '/src/ACF/Fields.php',
         'Adimeo\\BaseDocumentaire\\ACF\\Loader' => __DIR__ . '/../..' . '/src/ACF/Loader.php',
         'Adimeo\\BaseDocumentaire\\Plugin' => __DIR__ . '/../..' . '/src/Plugin.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
