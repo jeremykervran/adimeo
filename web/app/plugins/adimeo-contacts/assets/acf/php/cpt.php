@@ -1,0 +1,47 @@
+<?php
+
+add_action( 'init', function() {
+	register_post_type( 'contact', array(
+		'labels' => array(
+			'name' => 'Contacts',
+			'singular_name' => 'Contact',
+			'menu_name' => 'Contacts',
+			'all_items' => 'All Contacts',
+			'edit_item' => 'Edit Contact',
+			'view_item' => 'View Contact',
+			'view_items' => 'View Contacts',
+			'add_new_item' => 'Add New Contact',
+			'add_new' => 'Add New Contact',
+			'new_item' => 'New Contact',
+			'parent_item_colon' => 'Parent Contact:',
+			'search_items' => 'Search Contacts',
+			'not_found' => 'No contacts found',
+			'not_found_in_trash' => 'No contacts found in Trash',
+			'archives' => 'Contact Archives',
+			'attributes' => 'Contact Attributes',
+			'insert_into_item' => 'Insert into contact',
+			'uploaded_to_this_item' => 'Uploaded to this contact',
+			'filter_items_list' => 'Filter contacts list',
+			'filter_by_date' => 'Filter contacts by date',
+			'items_list_navigation' => 'Contacts list navigation',
+			'items_list' => 'Contacts list',
+			'item_published' => 'Contact published.',
+			'item_published_privately' => 'Contact published privately.',
+			'item_reverted_to_draft' => 'Contact reverted to draft.',
+			'item_scheduled' => 'Contact scheduled.',
+			'item_updated' => 'Contact updated.',
+			'item_link' => 'Contact Link',
+			'item_link_description' => 'A link to a contact.',
+		),
+		'public' => true,
+		'show_in_rest' => true,
+		'menu_icon' => 'dashicons-id',
+		'supports' => array(
+			0 => 'title',
+			1 => 'editor',
+			2 => 'thumbnail',
+			3 => 'custom-fields',
+		),
+		'delete_with_user' => false,
+	) );
+} );

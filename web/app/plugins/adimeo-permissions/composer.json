@@ -1,0 +1,21 @@
+{
+    "name": "adimeo/permissions",
+    "description": "Plugin de gestion des permissions utilisateurs WordPress",
+    "type": "wordpress-plugin",
+    "license": "GPLv3",
+    "autoload": {
+        "psr-4": {
+            "Adimeo\\Permissions\\": "src/",
+            "Adimeo\\Permissions\\Admin\\": "src/Admin"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jeremy Kervran",
+            "email": "kervran.jeremy@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2"
+    }
+}

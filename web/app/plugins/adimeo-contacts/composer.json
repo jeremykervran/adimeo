@@ -1,0 +1,19 @@
+{
+    "name": "adimeo/contacts",
+    "description": "Plugin de gestion des contacts",
+    "license": "GPLv3",
+    "autoload": {
+        "psr-4": {
+            "Adimeo\\Contacts\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jeremy Kervran",
+            "email": "kervran.jeremy@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2"
+    }
+}

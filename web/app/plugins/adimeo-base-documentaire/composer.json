@@ -1,0 +1,19 @@
+{
+    "name": "adimeo/base-documentaire",
+    "description": "Plugin de gestion des documents",
+    "license": "GPLv3",
+    "autoload": {
+        "psr-4": {
+            "Adimeo\\BaseDocumentaire\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jeremy Kervran",
+            "email": "kervran.jeremy@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2"
+    }
+}
