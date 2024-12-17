@@ -35,8 +35,8 @@ define('ADIMEO_BASE_DOC_PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('ADIMEO_BASE_DOC_ACF_PHP_DIR', ADIMEO_BASE_DOC_PLUGIN_DIR . 'assets/acf/php');
 
 // Activation & deactivation hooks
-register_activation_hook( __FILE__, ['Adimeo\BaseDocumentaire\Plugin', 'activate'] );
-register_deactivation_hook( __FILE__, ['Adimeo\BaseDocumentaire\Plugin', 'deactivate'] );
+register_activation_hook(__FILE__, ['Adimeo\BaseDocumentaire\Plugin', 'activate']);
+register_deactivation_hook(__FILE__, ['Adimeo\BaseDocumentaire\Plugin', 'deactivate']);
 
 // Classes
 new Loader();

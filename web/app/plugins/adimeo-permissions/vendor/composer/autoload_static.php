@@ -26,7 +26,9 @@ class ComposerStaticInitc901463ca75a321c3d743311b0a0da95
     );
 
     public static $classMap = array (
-        'Adimeo\\Permissions\\Admin\\Permissions' => __DIR__ . '/../..' . '/src/Admin/Menu.php',
+        'Adimeo\\Permissions\\API\\Routes' => __DIR__ . '/../..' . '/src/API/Routes.php',
+        'Adimeo\\Permissions\\Admin\\Menu' => __DIR__ . '/../..' . '/src/Admin/Menu.php',
+        'Adimeo\\Permissions\\Admin\\User' => __DIR__ . '/../..' . '/src/Admin/User.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 

@@ -2,21 +2,24 @@
 
 use Timber\Site;
 
-class Home extends Site {
-	public function __construct() {
+class Home extends Site
+{
+	public function __construct()
+    {
 		add_filter('timber/context', [ $this, 'home_context' ]);
 
 		parent::__construct();
 	}
 
 	/**
-	 * Generate home context
+	 * Génération du context de la home
 	 *
 	 * @param $context
 	 *
 	 * @return array
 	 */
-	public function home_context($context): array {
+	public static function home_context($context): array
+    {
 		// Home context
 		$context['contacts'] = Timber::get_posts([
 			'post_type' => 'contact',

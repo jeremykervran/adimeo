@@ -5,3 +5,9 @@ config:
 services:
   appserver:
     type: php:8.2
+  phpmyadmin:
+    type: phpmyadmin
+    portforward: true
+  mailhog:
+    type: mailhog
+    portforward: true

@@ -8,27 +8,18 @@ use Timber\Timber;
 // Préparer les données nécessaires pour le contexte
 $context = Timber::context();
 
-// Récupérer les articles par type de contenu et triés
+$context = Home::home_context($context);
+
 $context['posts'] = Timber::get_posts([
-	'post_type'      => 'post',
-	'posts_per_page' => -1,
-	'orderby'        => 'date',
-	'order'          => 'DESC',
+    'post_type' => 'post',
+    'post_status' => 'publish',
+    'posts_per_page' => -1,
 ]);
 
 $context['pages'] = Timber::get_posts([
-	'post_type'      => 'page',
-	'posts_per_page' => -1,
-	'orderby'        => 'menu_order',
-	'order'          => 'ASC',
-]);
-
-// Si vous avez des types de contenu personnalisés, ajoutez-les ici
-$context['custom_posts'] = Timber::get_posts([
-	'post_type'      => 'custom_post_type',
-	'posts_per_page' => -1,
-	'orderby'        => 'title',
-	'order'          => 'ASC',
+    'post_type' => 'page',
+    'post_status' => 'publish',
+    'posts_per_page' => -1,
 ]);
 
 // Afficher le template Twig

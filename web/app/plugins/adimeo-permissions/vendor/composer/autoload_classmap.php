@@ -6,6 +6,8 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Adimeo\\Permissions\\Admin\\Permissions' => $baseDir . '/src/Admin/Menu.php',
+    'Adimeo\\Permissions\\API\\Routes' => $baseDir . '/src/API/Routes.php',
+    'Adimeo\\Permissions\\Admin\\Menu' => $baseDir . '/src/Admin/Menu.php',
+    'Adimeo\\Permissions\\Admin\\User' => $baseDir . '/src/Admin/User.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
 );

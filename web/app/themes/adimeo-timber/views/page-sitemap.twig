@@ -1,25 +1,63 @@
-<article class="sitemap">
-    <h1>Plan du site</h1>
+{% extends "base.twig" %}
 
-    <section>
-        <h2>Articles</h2>
-        <ul>
-            {% for post in posts %}
-                <li>
-                    <a href="{{ post.link }}">{{ post.title }}</a> - {{ post.date|date('d/m/Y') }}
-                </li>
-            {% endfor %}
-        </ul>
-    </section>
+{% block content %}
+    <article class="sitemap">
+        <h1>Plan du site</h1>
 
-    <section>
-        <h2>Pages</h2>
-        <ul>
-            {% for page in pages %}
-                <li>
-                    <a href="{{ page.link }}">{{ page.title }}</a>
-                </li>
-            {% endfor %}
-        </ul>
-    </section>
-</article>
+        {% if posts %}
+            <section>
+                <h2>Articles</h2>
+                <ul>
+                    {% for post in posts %}
+                        {% set post = get_post(post) %}
+                        <li>
+                            <a href="{{ post.link }}">{{ post.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        {% endif %}
+
+        {% if contacts %}
+            <section>
+                <h2>Contacts</h2>
+                <ul>
+                    {% for contact in contacts %}
+                        {% set contact = get_post(contact) %}
+                        <li>
+                            <a href="{{ contact.link }}">{{ contact.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        {% endif %}
+
+        {% if documents %}
+            <section>
+                <h2>Documents</h2>
+                <ul>
+                    {% for document in documents %}
+                        <li>
+                            <a href="{{ document.link }}">{{ document.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        {% endif %}
+
+        {% if pages %}
+            <section>
+                <h2>Pages</h2>
+                <ul>
+                    {% for page in pages %}
+                        {% set page = get_post(page) %}
+                        <li>
+                            <a href="{{ page.link }}">{{ page.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        {% endif %}
+
+    </article>
+{% endblock %}

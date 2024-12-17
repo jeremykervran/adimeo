@@ -2,7 +2,8 @@
 
 namespace Adimeo\BaseDocumentaire\ACF;
 
-class Fields {
+class Fields
+{
 	private int $base_year = 1900;
 
 	private array $months = [
@@ -20,14 +21,23 @@ class Fields {
 		12 => 'Decembre',
 	];
 
-	public function __construct() {
+	public function __construct()
+    {
 		add_filter('acf/load_field/name=annee', [$this, 'load_year_field']);
 		add_filter('acf/load_field/name=mois', [$this, 'load_month_field']);
 		add_filter('acf/load_field/name=jour', [$this, 'load_day_field']);
 		add_filter('acf/validate_value/name=jour', [$this, 'validate_day_field'], 10, 4);
 	}
 
-	public function load_year_field($field): array {
+    /**
+     * Chargment du champ "annee"
+     *
+     * @param array $field
+     *
+     * @return array
+     */
+	public function load_year_field(array $field): array
+    {
 		$years_range = range(date('Y'), $this->base_year);
 
 		// Utilisation de array combine pour avoir des clefs/valeurs identiques
@@ -36,13 +46,29 @@ class Fields {
 		return $field;
 	}
 
-	public function load_month_field($field): array {
+    /**
+     * Chargment du champ "mois"
+     *
+     * @param array $field
+     *
+     * @return array
+     */
+	public function load_month_field(array $field): array
+    {
 		$field['choices'] = $this->months;
 
 		return $field;
 	}
 
-	public function load_day_field($field): array {
+    /**
+     * Chargement du champ "jour"
+     *
+     * @param array $field
+     *
+     * @return array
+     */
+	public function load_day_field(array $field): array
+    {
 		$days_range = range(1, 31);
 
 		// Utilisation de array combine pour avoir des clefs/valeurs identiques
@@ -52,16 +78,17 @@ class Fields {
 	}
 
 	/**
-	 * Valider que la date est valide
+	 * Vérifier que la date est valide
 	 *
-	 * @param $valid
-	 * @param $value
-	 * @param $field
-	 * @param $input
+	 * @param mixed $valid
+	 * @param mixed $value
+	 * @param array $field
+	 * @param string $input
 	 *
 	 * @return true|string
 	 */
-	public function validate_day_field($valid, $value, $field, $input): true|string {
+	public function validate_day_field(bool $valid, mixed $value, array $field, string $input): true|string
+    {
 		// Si la valeur est déjà non-valide, on la retourne
 		if (!$valid) {
 			return $valid;
@@ -79,5 +106,4 @@ class Fields {
 
 		return true;
 	}
-
 }

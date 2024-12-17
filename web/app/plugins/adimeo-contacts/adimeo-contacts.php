@@ -36,8 +36,8 @@ define('ADIMEO_CONTACTS_PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('ADIMEO_CONTACTS_ACF_PHP_DIR', ADIMEO_CONTACTS_PLUGIN_DIR . 'assets/acf/php');
 
 // Activation & deactivation hooks
-register_activation_hook( __FILE__, ['Adimeo\Contacts\Plugin', 'activate'] );
-register_deactivation_hook( __FILE__, ['Adimeo\Contacts\Plugin', 'deactivate'] );
+register_activation_hook(__FILE__, ['Adimeo\Contacts\Plugin', 'activate']);
+register_deactivation_hook(__FILE__, ['Adimeo\Contacts\Plugin', 'deactivate']);
 
 new Loader();
 

@@ -4,16 +4,20 @@ namespace Adimeo\BaseDocumentaire\ACF;
 
 use WpOrg\Requests\Exception\Http\Status500;
 
-class Loader {
-
-	public function __construct() {
+class Loader
+{
+	public function __construct()
+    {
 		add_action( 'acf/init', [ $this, 'load_acf_files' ] );
 	}
 
 	/**
+     * Chargement automatique des champs ACF exportés en PHP
+     *
 	 * @throws Status500
 	 */
-	public function load_acf_files(): void {
+	public function load_acf_files(): void
+    {
 		if (!is_dir(ADIMEO_BASE_DOC_ACF_PHP_DIR)) {
 			throw new Status500('The directory containing ACF PHP files is missing.');
 		}
@@ -24,5 +28,4 @@ class Loader {
 			include_once $acf_file;
 		}
 	}
-
 }
