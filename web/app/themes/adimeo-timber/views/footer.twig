@@ -1,1 +1,9 @@
+<div class="footer-pages-wrapper">
+    <ul class="footer-pages-list">
+        {% for page in footer_pages %}
+            <li class="footer-pages-item"><a href="{{ page.link }}">{{ page.title }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+
 Copyright {{"now"|date('Y')}}

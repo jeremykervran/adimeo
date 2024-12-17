@@ -44,6 +44,22 @@ class StarterSite extends Site {
 		$context['menu']  = Timber::get_menu();
 		$context['site']  = $this;
 
+		// Add footer pages to context
+		$context['footer_pages'] = [
+			'mentions_legales' => [
+				'title' => 'Mentions légales',
+				'link' => get_permalink(get_page_by_path('mentions-legales')),
+			],
+			'politique_confidentialite' => [
+				'title' => 'Politique de confidentialité',
+				'link' => get_privacy_policy_url(),
+			],
+			'plan_site' => [
+				'title' => 'Plan du site',
+				'link' => get_permalink(get_page_by_path('plan-du-site')),
+			]
+		];
+
 		return $context;
 	}
 

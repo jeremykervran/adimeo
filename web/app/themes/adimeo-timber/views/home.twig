@@ -1,0 +1,43 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    {% if contacts %}
+        <div class="contacts-wrapper">
+            <h2 class="contacts-title">Contacts</h2>
+            {% for contact in contacts %}
+                {% set contact = get_post(contact) %}
+                <div class="contact-card">
+                    <p class="contact-names">{{ contact.meta('prenom') }} {{ contact.meta('nom') }}</p>
+                    <p class="contact-email">
+                        <a class="contact-email-link" href="mailto:{{ contact.meta('email') }}">{{ contact.meta('email') }}</a>
+                    </p>
+                    <p class="contact-telephone">
+                        <a class="contact-telephone-link" href="tel:{{ contact.meta('telephone') }}" >{{ contact.meta('telephone') }}</a>
+                    </p>
+                    <p class="contact-description">{{ contact.meta('descriptif_court') }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if documents %}
+        <div class="documents-wrapper">
+            <h2 class="documents-title">Documents</h2>
+            {% for document in documents %}
+                {% set document = get_post(document) %}
+                <div class="document-card">
+                    <p class="document-title">{{ document.title }}</p>
+                    <div class="document-file">
+                        <img class="document-file-icon" src="{{ document.meta('document').icon }}" alt="">
+                        <a class="document-file-link" href={{ document.meta('document').url }}>{{ document.meta('document').filename }}</a>
+                    </div>
+                    {% set date = document.meta('date_de_publication') %}
+                    <p class="document-date">Date : {{ date.jour.value }}/{{ date.mois.value }}/{{ date.annee.value }}</p>
+                    <p class="document-description">{{ document.meta('description') }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+{% endblock %}
