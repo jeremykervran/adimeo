@@ -33,7 +33,8 @@
                         <a class="document-file-link" href={{ document.meta('document').url }}>{{ document.meta('document').filename }}</a>
                     </div>
                     {% set date = document.meta('date_de_publication') %}
-                    <p class="document-date">Date : {{ date.jour.value }}/{{ date.mois.value }}/{{ date.annee.value }}</p>
+                    <p class="document-date">Date du document : {{ date.jour.value }}/{{ date.mois.value }}/{{ date.annee.value }}</p>
+                    <p class="document-date">Date de publication : {{ document.post_date|date('d/m/Y H:i') }}</p>
                     <p class="document-description">{{ document.meta('description') }}</p>
                 </div>
             {% endfor %}
