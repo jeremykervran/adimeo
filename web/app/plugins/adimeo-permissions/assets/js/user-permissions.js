@@ -5,12 +5,16 @@ jQuery(document).ready(function ($) {
     function refreshCapabilitiesList(role) {
         const url = `${userPermissions.apiUrl}${role}`;
         const nonce = `${userPermissions.nonce}`;
+        const userId = new URLSearchParams(window.location.search).get('user_id');
 
         // Requête GET pour récupérer les capabilities du rôle
         $.ajax({
             url: url,
             dataType: 'json',
             type: 'GET',
+            data: {
+                userId: userId,
+            },
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('X-WP-Nonce', nonce);
             },
@@ -19,14 +23,15 @@ jQuery(document).ready(function ($) {
 
                 if (data.capabilities.length) {
                     data.capabilities.forEach(cap => {
+                        let checked = data.user_capabilities.includes(cap) ? 'checked' : '';
                         const checkbox = `<label>
-                            <input type="checkbox" name="user_capabilities[]" value="${cap}" checked />
+                            <input type="checkbox" name="user_capabilities[]" value="${cap}" ${checked} />
                             ${cap}
                         </label><br>`;
                         $capabilitiesList.append(checkbox);
                     });
                 } else {
-                    $capabilitiesList.append('<p>Aucune capacité disponible.</p>');
+                    $capabilitiesList.append('<p>Aucune capacité trouvée.</p>');
                 }
             },
             error: function () {
@@ -40,6 +45,8 @@ jQuery(document).ready(function ($) {
         const userId = `${userPermissions.userId}`;
         const url = `${userPermissions.apiUrl}${userId}`;
         const nonce = `${userPermissions.nonce}`;
+
+        const selectedRole = $('#user_role option:selected').val();
 
         // Récupération de toutes les checkboxes des capabilities cochées
         const checkedCapabilities = $('#capabilities_list input[type="checkbox"]:checked')
@@ -59,20 +66,23 @@ jQuery(document).ready(function ($) {
         $.ajax({
             url: url,
             dataType: 'json',
+            type: 'POST',
             data: {
                 userId: userId,
-                checkedCapabilities: checkedCapabilities,
-                uncheckedCapabilities: uncheckedCapabilities
+                selectedRole: selectedRole,
+                checkedCapabilities: JSON.stringify(checkedCapabilities),
+                uncheckedCapabilities: JSON.stringify(uncheckedCapabilities),
             },
-            type: 'POST',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('X-WP-Nonce', nonce);
             },
             success: function (data) {
-
+                $(".capabilities-update-success").empty()
+                $capabilitiesList.append('<p style="color:green;" class="capabilities-update-success">Capacités modifiées !</p>');
             },
             error: function () {
-                // $capabilitiesList.html('<p>Erreur lors de la récupération des capacités.</p>');
+                $(".capabilities-update-error").empty()
+                $capabilitiesList.append('<p style="color:red;" class="capabilities-update-error">Erreur lors de la modification des capacités.</p>');
             },
 
         })

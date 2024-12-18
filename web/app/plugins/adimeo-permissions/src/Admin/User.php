@@ -26,10 +26,6 @@ class User
             return;
         }
 
-        // Récupérations des rôles WordPress et du rôle de l'utilisateur courant
-        $roles = wp_roles()->get_names();
-        $user_role = $user->roles[0] ?? '';
-
         $template = ADIMEO_PERMISSIONS_TEMPLATES_PATH . 'admin/user-permissions.php';
 
         // Gestion du cas où le template est manquant
@@ -37,9 +33,13 @@ class User
             throw new Status500('Le template des permissions utilisateur est manquant.');
         }
 
+        // Récupérations des rôles WordPress et du rôle de l'utilisateur courant
+        $roles = wp_roles()->get_names();
+        $user_role = $user->roles[0] ?? '';
+
         // Ajout de query_vars pour le template
-        set_query_var( 'roles', $roles );
-        set_query_var( 'user_role', $user_role );
+        set_query_var('roles', $roles);
+        set_query_var('user_role', $user_role);
 
         include_once $template;
     }
